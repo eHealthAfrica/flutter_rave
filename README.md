@@ -1,23 +1,13 @@
 # Rave by Flutterwave Plugin for Flutter
 
-[![pub package](https://img.shields.io/pub/v/flutter_rave.svg)](https://pub.dartlang.org/packages/flutter_rave)
-
-A Flutter plugin for making payments via Rave by Flutterwave Payment Gateway. Fully
-supports Android and iOS.
-
-<div style="text-align: center">
-    <table>
-        <tr>
-            <td style="text-align: center">
-                <img src="./example/s1.png" width="400" />
-            </td>
-        </tr>
-    </table>
-</div>
-
-
 ## Installation
-To use this plugin, add `flutter_rave` as a [dependency in your pubspec.yaml file](https://flutter.io/platform-plugins/).
+``` dart
+ flutter_rave:
+    git:
+      url: https://github.com/demimola24/flutter_rave.git
+      ref: master
+      
+```
 
 Then initialize the plugin preferably in the `initState` of your widget.
 
@@ -61,6 +51,7 @@ class _MyHomePageState extends State<MyHomePage> {
       transactionRef: "SCH${DateTime.now().millisecondsSinceEpoch}",
       amount: 100,
       email: "demo1@example.com",
+      payment_plan: paymentPlanId,
       onSuccess: (response) {
         print("$response");
         print("Transaction Successful");
@@ -92,7 +83,7 @@ class _MyHomePageState extends State<MyHomePage> {
 }
 ```
 
-No other configuration required&mdash;the plugin works out of the box.
+## Payment Plan has been added to the payload
 
 ## Running Example project
 For help getting started with Flutter, view the online [documentation](https://flutter.io/).
