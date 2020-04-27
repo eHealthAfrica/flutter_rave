@@ -57,6 +57,7 @@ class RaveProvider extends StatefulWidget {
   final List<Map<String, dynamic>> subaccounts;
   final String publicKey;
   final String encKey;
+  final String payment_plan;
   final String transactionRef;
   final double amount;
   final String email;
@@ -72,6 +73,7 @@ class RaveProvider extends StatefulWidget {
     @required this.publicKey,
     @required this.encKey,
     this.subaccounts,
+    this.payment_plan,
     this.transactionRef,
     this.amount,
     this.email,
@@ -171,6 +173,7 @@ class _RaveProviderState extends State<RaveProvider> {
         widget.publicKey,
         widget.encKey,
         email: widget.email,
+        payment_plan: widget.payment_plan,
         isProduction: !widget.isDemo,
         transactionReference: widget.transactionRef,
         amount: widget.amount,
@@ -347,15 +350,15 @@ class _RaveProviderState extends State<RaveProvider> {
       return null;
     } catch (e) {
       if (mounted) {
-        Scaffold.of(context).showSnackBar(
-          SnackBar(
-            content: Text("${e.toString()}"),
-            duration: Duration(
-              seconds: 5,
-            ),
-            backgroundColor: Colors.red,
-          ),
-        );
+//        Scaffold.of(context).showSnackBar(
+//          SnackBar(
+//            content: Text("${e.toString()}"),
+//            duration: Duration(
+//              seconds: 5,
+//            ),
+//            backgroundColor: Colors.red,
+//          ),
+//        );
 
         setState(() {
           isProcessing = false;
@@ -606,7 +609,7 @@ class _BillingInfoProviderState extends State<BillingInfoProvider> {
                   height: 15,
                 ),
                 FlatButton(
-                  color: Theme.of(context).accentColor,
+                  color: Theme.of(context).primaryColor,
                   onPressed: () {
                     _globalKey.currentState.save();
                     if (_globalKey.currentState.validate()) {
@@ -696,6 +699,7 @@ class _ValueCollectorComponentState extends State<ValueCollectorComponent> {
           SizedBox(
             width: double.infinity,
             child: RaisedButton(
+              color: Theme.of(context).primaryColor,
               onPressed: () {
                 if (value != null && value.isNotEmpty) {
                   if (widget.onValueCollected != null) {

@@ -26,6 +26,7 @@ class RaveCardPayment {
   final String transactionRef;
   final List<Map<String, dynamic>> subaccounts;
   final double amount;
+  final String  payment_plan;
   final String email;
   final Function onSuccess;
   final Function onFailure;
@@ -41,6 +42,7 @@ class RaveCardPayment {
     @required this.amount,
     @required this.email,
     this.subaccounts,
+    this.payment_plan,
     this.isDemo = false,
     this.onSuccess,
     this.onFailure,
@@ -58,6 +60,7 @@ class RaveCardPayment {
           encKey: this.encKey,
           transactionRef: this.transactionRef,
           subaccounts: this.subaccounts,
+          payment_plan:this.payment_plan,
           amount: this.amount,
           email: this.email,
           onSuccess: (r) {
@@ -128,6 +131,7 @@ class _AddDebitCardScreen extends StatefulWidget {
   final String encKey;
   final String transactionRef;
   final List<Map<String, dynamic>> subaccounts;
+  final String payment_plan;
   final double amount;
   final String email;
   final bool isDemo;
@@ -143,6 +147,7 @@ class _AddDebitCardScreen extends StatefulWidget {
     @required this.amount,
     @required this.email,
     this.subaccounts,
+    this.payment_plan,
     this.isDemo = false,
     this.onSuccess,
     this.onFailure,
@@ -204,6 +209,7 @@ class __AddDebitCardScreenState extends State<_AddDebitCardScreen> {
                                       onSuccess: widget.onSuccess,
                                       onFailure: widget.onSuccess,
                                       cardInfo: _cardInfo,
+                                      payment_plan: widget.payment_plan,
                                       builder: (context, processCard) {
                                         _processCard = processCard;
                                         return _AddDebitCardWidget(
@@ -228,8 +234,9 @@ class __AddDebitCardScreenState extends State<_AddDebitCardScreen> {
                                   ),
                                   SizedBox(
                                     width: double.infinity,
+                                    height: 56,
                                     child: FlatButton(
-                                      color: Theme.of(context).accentColor,
+                                      color: Theme.of(context).primaryColor,
                                       disabledColor: Colors.grey[300],
                                       onPressed: canContinue
                                           ? () async {
@@ -494,6 +501,7 @@ class __AddDebitCardWidgetState extends State<_AddDebitCardWidget> {
                         color: Colors.grey[600],
                       ),
                 ),
+                SizedBox(height: 4,),
                 TextField(
                   focusNode: _cardNumerFocusNode,
                   controller: _creditCardNumberController,
@@ -551,6 +559,7 @@ class __AddDebitCardWidgetState extends State<_AddDebitCardWidget> {
                                       color: Colors.grey[600],
                                     ),
                           ),
+                          SizedBox(height: 4,),
                           TextField(
                             focusNode: _cardExpDateFocusNode,
                             maxLength: 5,
@@ -610,6 +619,7 @@ class __AddDebitCardWidgetState extends State<_AddDebitCardWidget> {
                                       color: Colors.grey[600],
                                     ),
                           ),
+                          SizedBox(height: 4,),
                           TextField(
                             focusNode: _cardCvvFocusNode,
                             controller: _cvvController,
@@ -752,6 +762,7 @@ class __CardAddedSuccessfullyState extends State<_CardAddedSuccessfully> {
               ),
               SizedBox(
                 width: double.infinity,
+                height: 56,
                 child: FlatButton(
                   color: Theme.of(context).primaryColor,
                   disabledColor: Colors.grey[300],
