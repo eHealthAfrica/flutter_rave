@@ -104,14 +104,7 @@ class CreditCardInfo extends Equatable {
   String brand;
   String type;
 
-  CreditCardInfo(
-      this.cardNumber, this.expirationMonth, this.expirationYear, this.cvv)
-      : super([
-          cvv,
-          expirationMonth,
-          expirationYear,
-          cardNumber,
-        ]);
+  CreditCardInfo(this.expirationMonth, this.expirationYear, this.cvv, this.cardNumber);
 
   bool get isComplete {
     return cardNumber != null &&
@@ -123,6 +116,10 @@ class CreditCardInfo extends Equatable {
         cvv != null &&
         cvv.isNotEmpty;
   }
+
+  @override
+  // TODO: implement props
+  List<Object> get props => null;
 }
 
 class _AddDebitCardScreen extends StatefulWidget {
