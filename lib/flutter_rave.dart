@@ -104,7 +104,7 @@ class CreditCardInfo extends Equatable {
   String brand;
   String type;
 
-  CreditCardInfo(this.expirationMonth, this.expirationYear, this.cvv, this.cardNumber);
+  CreditCardInfo( this.cardNumber,this.expirationMonth, this.expirationYear, this.cvv);
 
   bool get isComplete {
     return cardNumber != null &&
