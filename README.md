@@ -4,7 +4,7 @@
 ``` dart
  flutter_rave:
     git:
-      url: https://github.com/demimola24/flutter_rave.git
+      url: https://github.com/eHealthAfrica/flutter_rave
       ref: master
       
 ```
